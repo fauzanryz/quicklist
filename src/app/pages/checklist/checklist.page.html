@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>
+      <img src="assets/images/logo.png" />
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="addChecklist()">
+        <ion-button>
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-button>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title color="light" size="large">Your lists</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div id="container">
+    <ion-list lines="none">
+      <ion-item-sliding>
+        <ion-item routerLink="/checklists/123" routerDirection="forward">
+          <ion-label>TITLE GOES HERE</ion-label>
+          <span>0 items</span>
+        </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option
+            color="light"
+            (click)="renameChecklist(renameChecklist)"
+          >
+            <ion-icon slot="icon-only" name="clipboard"></ion-icon>
+          </ion-item-option>
+          <ion-item-option
+            color="danger"
+            (click)="removeChecklist(removeChecklist)"
+          >
+            <ion-icon slot="icon-only" name="trash"></ion-icon
+          ></ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+      <ion-item *ngFor="let checkListItem of checklists">
+        <ion-label>{{checkListItem}}</ion-label>
+        <span>0 items</span>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
